@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Tool Store</title>
+</head>
+<body>
+
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease; 
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 0; 
+    text-align: center;
+}
+
+header h1 {
+    font-weight: bold; 
+    text-transform: uppercase; 
+    background: linear-gradient(90deg, #28a745, #007bff); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    padding: 5px 10px; 
+    border-radius: 5px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    display: inline-block; 
+    margin: 0;
+}
+
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+
+
+nav ul li {
+    display: inline-block;
+    margin: 0 20px; 
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+}
+
+nav ul li a:hover {
+    color: #28a745; 
+}
+
+
+
+#products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 30px;
+    background-color: #fff;
+}
+
+.product {
+    width: 300px;
+    background-color: #e8e8e8;
+    border: 1px solid #ddd;
+    margin: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+    transform: translateY(-8px); /* Slightly increased hover effect for more depth */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover; 
+}
+
+.product h3 {
+    font-size: 1.4rem;
+    margin: 10px 0;
+    font-weight: 600;
+}
+
+.product p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #666;
+}
+
+button.add-to-cart {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 25px; 
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button.add-to-cart:hover {
+    background-color: #218838;
+    transform: scale(1.05); 
+}
+
+
+#cart-summary {
+    background-color: #fff;
+    padding: 20px;
+    margin: 30px auto;
+    max-width: 700px; 
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#cart-summary h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+#cart-items {
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+
+#cart-items li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+#cart-items li span {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+
+#checkout {
+    background-color: #fff;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 700px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#checkout h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+#payment-form {
+    margin-top: 20px;
+}
+
+button#submit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button#submit-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); 
+}
+
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative; 
+    bottom: 0;
+    width: 100%;
+    font-size: 1rem;
+}
+
+
+footer {
+    background-color: #333; 
+    color: white; 
+    text-align: center; 
+    padding: 20px; 
+    position: relative; 
+    width: 100%; 
+    font-size: 1rem;
+}
+
+footer .contact-info {
+    margin-bottom: 15px; 
+}
+
+footer .contact-info a {
+    color: #007bff; 
+    text-decoration: none; 
+    font-weight: bold; 
+    transition: color 0.3s ease; 
+}
+
+footer .contact-info a:hover {
+    color: #28a745; 
+}
+
+footer .social-media {
+    margin-top: 20px;
+}
+
+footer .social-media ul {
+    list-style-type: none; 
+    display: flex; 
+    justify-content: center; 
+    gap: 20px; 
+    padding: 0;
+    margin: 0;
+}
+
+footer .social-media ul li {
+    display: inline-block; 
+}
+
+footer .social-media ul li a {
+    color: white; 
+    text-decoration: none; 
+    font-size: 1.2rem; 
+    font-weight: 600; 
+    transition: color 0.3s ease, transform 0.3s ease; 
+}
+
+footer .social-media ul li a:hover {
+    color: #28a745; 
+    transform: scale(1.1); 
+}
+
+footer p {
+    margin: 10px 0; 
+    font-size: 0.9rem; 
+}
+
+
+
+@media (max-width: 768px) {
+    #products {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product {
+        width: 90%;
+    }
+
+    #cart-summary, #checkout {
+        width: 90%;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    nav ul li a {
+        font-size: 1.2rem;
+    }
+
+    button.add-to-cart, button#submit-button {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px; 
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    nav ul li a {
+        font-size: 1rem;
+    }
+
+    .product {
+        width: 100%;
+    }
+
+    #cart-summary, #checkout {
+        width: 100%;
+    }
+
+
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+
+
+
+body {
+    font-family: Arial;
+    font-size: 17px;
+    padding: 8px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0 -16px;
+}
+
+.col-25 {
+    -ms-flex: 25%;
+    flex: 25%;
+}
+
+.col-50 {
+    -ms-flex: 50%;
+    flex: 50%;
+}
+
+.col-75 {
+    -ms-flex: 75%;
+    flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+    padding: 0 16px;
+}
+
+.container {
+    background-color: #f2f2f2;
+    padding: 5px 20px 15px 20px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+}
+
+input[type=text] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+label {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.icon-container {
+    margin-bottom: 20px;
+    padding: 7px 0;
+    font-size: 24px;
+}
+
+.btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    width: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+a {
+    color: #2196F3;
+}
+
+hr {
+    border: 1px solid lightgrey;
+}
+
+span.price {
+    float: right;
+    color: grey;
+}
+
+@media (max-width: 800px) {
+    .row {
+        flex-direction: column-reverse;
+    }
+    .col-25 {
+        margin-bottom: 20px;
+    }
+}
+#searchBar {
+            padding: 10px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+#searchButton {
+            padding: 3px 8px;
+            font-size: 0.8rem;
+            border-radius: 5px;
+            border: 1px solid #28a745;
+            background-color: #28a745;
+            color: #fff;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+    </style>
+    
+ 
+    <div class="container" style="flex-grow: 1;">
+       
+    </div>
+
+  
+    
+    
+    
+    <header>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <h1 style="font-family: 'Poppins', sans-serif; font-size: 3rem; color: #28a745; letter-spacing: 2px;">
+                Tool <span style="color: #007bff;">Store</span>
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#checkout">Checkout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+  
+    <section id="products">
+        <div class="product" data-name="Drill" data-price="50.00">
+            <img src="image/matt-antonioli-uvMSarsRHzo-unsplash.jpg" alt="Drill">
+            <h3>Drill</h3>
+            <p>$50.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product" data-name="Screw driver" data-price="25.00">
+            <img src="image/istockphoto-155150739-1024x1024.jpg" alt="Screw driver">
+            <h3>Screw driver</h3>
+            <p>$25.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product" data-name="Cutting wire" data-price="10.00">
+            <img src="image/istockphoto-138072901-1024x1024.jpg" alt="Cutting wire">
+            <h3>Cutting wire</h3>
+            <p>$10.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product" data-name="Humidity sensor" data-price="30.00">
+            <img src="image/istockphoto-1364438668-1024x1024.jpg" alt="Humidity sensor">
+            <h3>Humidity sensor</h3>
+            <p>$30.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product" data-name="Humidity tester" data-price="60.00">
+            <img src="image/istockphoto-1136198224-1024x1024.jpg" alt="Humidity tester">
+            <h3>Humidity tester</h3>
+            <p>$60.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+      <div class="product" data-name="Camera" data-price="100.00">
+    <img src="image/samsung-memory-DNXjLfVy2Hc-unsplash.jpg" alt="Camera">
+    <h3>Camera</h3>
+    <p>$100.00</p>
+    <button class="add-to-cart">Add to Cart</button>
+</div>
+<div class="product" data-name="Sim card" data-price="5.00">
+    <img src="image/istockphoto-1393498574-1024x1024.jpg" alt="Sim card">
+    <h3>Sim card</h3>
+    <p>$5.00</p>
+    <button class="add-to-cart">Add to Cart</button>
+</div>
+<div class="product" data-name="Iphone XR" data-price="200.00">
+    <img src="image/d-s-82Y2dXmCZbY-unsplash.jpg" alt="Iphone XR">
+    <h3>Iphone XR</h3>
+    <p>$200.00</p>
+    <button class="add-to-cart">Add to Cart</button>
+</div>
+<div class="product" data-name="Smart phone" data-price="300.00">
+    <img src="image/d.jpg" alt="Smart phone">
+    <h3>Smart phone</h3>
+    <p>$300.00</p>
+    <button class="add-to-cart">Add to Cart</button>
+</div>
+<div class="product" data-name="Smart phone Tecno" data-price="400.00">
+    <img src="image/a.jpg" alt="Smart phone Tecno">
+    <h3>Smart phone Tecno</h3>
+    <p>$400.00</p>
+    <button class="add-to-cart">Add to Cart</button>
+</div>
+    </section>
+
+  
+    <section id="cart-summary">
+        <h2>Shopping Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: $<span id="total">0.00</span></p>
+    </section>
+
+
+    <section id="checkout">
+        <h2>Checkout</h2>
+        <form action="submit_order.php" method="POST">
+            <div class="row">
+                <div class="col-50">
+                    <h3>Billing Address</h3>
+                    <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                    <input type="text" id="fname" name="firstname" placeholder="Enter your firstname">
+                    <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                    <input type="text" id="email" name="email" placeholder="irasubizachristian3@gmail.com">
+                    <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                    <input type="text" id="adr" name="address" placeholder="kigali city">
+                    <label for="city"><i class="fa fa-institution"></i> City</label>
+                    <input type="text" id="city" name="city" placeholder="kigali">
+                    <div class="row">
+                        <div class="col-50">
+                            <label for="state">state</label>
+                            <input type="text" id="state" name="state" placeholder="RW">
+                        </div>
+                        <div class="col-50">
+                            <label for="zip">Zip</label>
+                            <input type="text" id="zip" name="zip" placeholder="10001">
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-50">
+                    <h3>Payment</h3>
+                    <label for="fname">Accepted Cards</label>
+                    <div class="icon-container">
+                        <i class="fa fa-cc-visa" style="color:navy;"></i>
+                        <i class="fa fa-cc-amex" style="color:blue;"></i>
+                        <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                        <i class="fa fa-cc-discover" style="color:orange;"></i>
+                    </div>
+                    <label for="cname">Name on Card</label>
+                    <input type="text" id="cname" name="cardname" placeholder="Irasubiza Christian">
+                    <label for="ccnum">Credit card number</label>
+                    <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                    <label for="expmonth">Exp Month</label>
+                    <input type="text" id="expmonth" name="expmonth" placeholder="September">
+                    <div class="row">
+                        <div class="col-50">
+                            <label for="expyear">Exp Year</label>
+                            <input type="text" id="expyear" name="expyear" placeholder="2024">
+                        </div>
+                        <div class="col-50">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" name="cvv" placeholder="353">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <label>
+                <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+            </label>
+            <input type="hidden" id="cart-total" name="cartTotal" value="0.00">
+            <input type="submit" value="Continue to checkout" class="btn">
+        </form>
+    </section>
+    
+
+    
+    <footer>
+        <div class="contact-info">
+            <p>Contact Us:</p>
+            <p>Phone: <a href="tel:0784930657">0784930657</a></p>
+            <p>Email: <a href="mailto:irasubizachristian3@gmail.com">irasubizachristian3@gmail.com</a></p>
+        </div>
+        <div class="social-media">
+            <p>Follow me on:</p>
+            <ul>
+                <li><a href="https://www.facebook.com/Irasubiza Christian" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://www.instagram.com/iam_f.a.mous" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="https://www.youtube.com/@Famous-e5h" target="_blank" class="youtube"><i class="fa fa-youtube"></i></a></li>
+            </ul>
+            
+        </div>
+        <p>&copy; 2024 Tool Store</p>
+    </footer>
+
+   
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+ 
+        let cart = [];
+    
+        
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            const totalElement = document.getElementById('total');
+            cartItems.innerHTML = '';
+            let total = 0;
+    
+            cart.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `${item.name} - $${item.price.toFixed(2)} 
+                    <button onclick="removeFromCart(${index})">Remove</button>`;
+                cartItems.appendChild(li);
+                total += item.price;
+            });
+    
+            totalElement.textContent = total.toFixed(2);
+            document.getElementById('cart-total').value = total.toFixed(2); 
+        }
+    
+       
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function () {
+                const productElement = this.closest('.product');
+                const productName = productElement.dataset.name;
+                const productPrice = parseFloat(productElement.dataset.price);
+    
+               
+                if (productName && !isNaN(productPrice)) {
+                    cart.push({ name: productName, price: productPrice });
+                    updateCart(); 
+                    alert(`${productName} added to cart!`);
+                }
+            });
+        });
+    
+        
+        function removeFromCart(index) {
+            cart.splice(index, 1); 
+            updateCart(); 
+        }
+    
+        const checkoutSection = document.getElementById('checkout');
+        checkoutSection.style.display = 'none';
+    
+        
+        document.querySelector('nav ul li a[href="#checkout"]').addEventListener('click', function (event) {
+            event.preventDefault(); 
+            checkoutSection.style.display = 'block'; 
+            checkoutSection.scrollIntoView({ behavior: 'smooth' }); 
+        });
+        
+document.getElementById('searchBar').addEventListener('input', function (e) {
+    const query = e.target.value.toLowerCase();
+    const products = document.querySelectorAll('.product');
+
+    products.forEach(product => {
+        const productName = product.querySelector('h3').textContent.toLowerCase();
+        if (productName.includes(query)) {
+            product.style.display = 'block'; 
+        } else {
+            product.style.display = 'none'; 
+        }
+    });
+});
+
+    </script>
+    
+
+
+</body>
+</html>
